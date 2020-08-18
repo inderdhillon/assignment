@@ -2,7 +2,7 @@
 
 This repository contains solution for assignment tasks as described in assignment.txt file.
 
-1. TEST1:
+1. TEST1
 Solution for TEST1 is present in TEST1 directory
 
 First part of solution for TEST1 is implemented in healthcheck.py script. This script monitors apache2, rabbitMQ and postgreSQL processes running on same Linux VM (Ubuntu OS).
@@ -97,8 +97,8 @@ ansible-playbook assignment.yml -i inventory.ini -e action=check_disk
 #This is to check disk space on all servers and sends email if disk utilization exceeds 80%.
 
 Sample email Alert:
-Subject: ALERT:- Low Disk Space on XXXXXXX
-Body: Ansible Disk-report :- Please clean up disk space on system XXXXX
+Subject: ALERT:- Low Disk Space on <Server Name>
+Body: Ansible Disk-report :- Please clean up disk space on system <Server Name>
 
 Validation Checks:
   NOTE: This playbook requires 'action' variable to be set, it will exit out if its not defined.
