@@ -1,0 +1,5 @@
+---
+# tasks file for postgressql
+
+  - name: Check if all packages exist on postgresql server
+    include_tasks: "{{ action }}.yml" 

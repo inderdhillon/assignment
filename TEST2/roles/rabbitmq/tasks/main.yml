@@ -1,0 +1,5 @@
+---
+# tasks file for rabbitmq-server
+
+  - name: Check if all packages exist on rabbitmq server
+    include_tasks: "{{ action }}.yml" 

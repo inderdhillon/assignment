@@ -1,0 +1,14 @@
+---
+# verify_install tasks file for rabbitmq-server
+
+  - name: Check if rabbitmq-server package exist
+    apt:
+      name: rabbitmq-server
+      state: present 
+    become: yes
+
+  - name: check rabbitmq-server service status
+    service:
+      name: rabbitmq-server
+      state: started
+    become: yes

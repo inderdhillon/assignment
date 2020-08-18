@@ -1,0 +1,5 @@
+{
+    "service_name": "rabbitmq-server",
+    "service_status": "UP",
+    "host_name": "ip-172-31-1-245"
+}

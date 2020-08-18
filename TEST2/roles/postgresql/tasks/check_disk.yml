@@ -1,0 +1,27 @@
+---
+# check_disk tasks file for postgresql hosts
+
+- name: Check that system volumes have atleast 20% free space 
+  assert:
+    that:
+       - mount.size_available > mount.size_total|float * 0.20
+    msg: Disk space has reached 80% threshold for {{ item.mount }}
+  vars:
+      mount: "{{ ansible_mounts | selectattr('mount','equalto',item.mount) | list | first }}"
+  with_items:
+      - "{{ ansible_mounts }}"
+  ignore_errors: yes
+  register: disk_free  
+
+- name: Sending an e-mail when Disk Space reaches 80% for any volume
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    sender: xxxxxx@gmail.com
+    username: xxxx@gmail.com
+    password: xxxxxxx
+    to: xxxxxxxx@gmail.com
+    subject: ALERT:- Low Disk Space on {{ ansible_hostname }}
+    body:   Ansible Disk-report :- Please clean up disk space on system {{ ansible_hostname }}.    
+  when: "'failed' in disk_free"
+  delegate_to: localhost

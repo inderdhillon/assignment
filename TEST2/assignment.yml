@@ -1,0 +1,19 @@
+---
+  
+- hosts: group1
+  gather_facts: true
+  tasks:
+   - include_role:
+       name: apache
+     
+- hosts: group2
+  gather_facts: true 
+  tasks:
+    - include_role:
+        name: postgresql
+        
+- hosts: group3
+  gather_facts: true 
+  tasks:
+    - include_role:
+        name: rabbitmq

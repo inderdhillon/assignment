@@ -1,0 +1,14 @@
+---
+# verify_install tasks file for postgresql
+
+  - name: Check if postgresql package exist
+    apt:
+      name: postgresql
+      state: present 
+    become: yes
+
+  - name: check postgresql service status
+    service:
+      name: postgresql
+      state: started
+    become: yes

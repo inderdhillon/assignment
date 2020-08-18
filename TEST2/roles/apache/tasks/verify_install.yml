@@ -1,0 +1,14 @@
+---
+# verify_install tasks file for apache
+
+  - name: Check if apache2 package exist
+    apt:
+      name: apache2
+      state: present 
+    become: yes
+
+  - name: check if apache2 service status
+    service:
+      name: apache2
+      state: started
+    become: yes
