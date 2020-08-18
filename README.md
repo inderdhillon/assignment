@@ -2,7 +2,7 @@
 
 This repository contains solution for assignment tasks as described in assignment.txt file.
 
-TEST1:
+1. TEST1:
 Solution for TEST1 is present in TEST1 directory
 
 First part of solution for TEST1 is implemented in healthcheck.py script. This script monitors apache2, rabbitMQ and postgreSQL processes running on same Linux VM (Ubuntu OS).
@@ -27,9 +27,9 @@ apache2-status-20200818-012430.json
 postgresql-status-20200818-012430.json
 rabbitmq-server-status-20200818-012430.json
 
-################################################################################
-    Write a simple Python REST webservice that: 
+1.1. Write a simple Python REST webservice that: 
 
+NOTES:
         Accepts the above created JSON file and writes it to Elasticsearch 
         Provide a second endpoint where the data can be retrieved, i.e 
 
@@ -43,10 +43,12 @@ https://myservice.rbc.com/add
 
 https://myservice.rbc.com/health_check
 
-################################################################################ 
 
-TEST2
+
+2. TEST2
 Solution for TEST2 is present in TEST2 directory.
+
+Below is directory structure of TEST2
 
 inventory.ini               # inventory file for three servers (apache2, rabbitmq and postgresql servers)
                             # This file also contains common variables
