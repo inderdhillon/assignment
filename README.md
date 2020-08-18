@@ -31,6 +31,8 @@ rabbitmq-server-status-20200818-012430.json
 1.2
 For second part of solution for TEST1, I am still working on creating working API to read JSON files and writing to Elasticsearch. But I did create one api using flask framework which reads JSON objects and store as articles and I can query from there to get status of particular service. I'll upload this working solution to my repository soon.
 
+I added SAMPLE_api.py script that I was working on flask framework.
+
 
 
 2. TEST2
@@ -81,7 +83,7 @@ ansible-playbook assignment.yml -I inventory -e action=verify_install
 #This is to verify if service packages are installed.
 
 ansible-playbook assignment.yml -i inventory.ini -e action=check_status
-#This is to check application status. Please update healthcheck service url. It returns 
+#This is to check application status. Please update healthcheck service url. It will send out email Alert if application is DOWN.
 
 ansible-playbook assignment.yml -i inventory.ini -e action=check_disk
 #This is to check disk space on all servers and sends email if disk utilization exceeds 80%.

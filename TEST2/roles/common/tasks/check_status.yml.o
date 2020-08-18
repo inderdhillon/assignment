@@ -1,9 +1,0 @@
----
-# tasks file for common role
-
-  - name: Check application status
-    uri:
-      url: https://myservice.rbc.com/health_check
-      return_content: yes
-    register: this
-    failed_when: "'UP' not in this.content"
