@@ -1,0 +1,10 @@
+---
+# tasks file for common role
+
+  - fail: msg="Exiting. this play requires 'action' to be set"
+    when: action is undefined
+
+  - name: Check disk and application status for all hosts
+    include_tasks: "{{ action }}.yml" 
+    when: ("'check_disk' in action") or ("'check_status' in action")
+

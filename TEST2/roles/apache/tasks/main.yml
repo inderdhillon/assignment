@@ -1,5 +1,10 @@
 ---
 # tasks file for apache
 
+  - fail: msg="Exiting. this play requires 'action' to be set"
+    when: action is undefined
+
   - name: Check if all packages exist on apache server
     include_tasks: "{{ action }}.yml" 
+    when: "'verify_install' in action"
+

@@ -1,19 +1,29 @@
 ---
-  
+
 - hosts: group1
-  gather_facts: true
   tasks:
-   - include_role:
-       name: apache
+    - include_role:
+        name: apache
+      when: "'verify_install' in action"
+    - include_role:
+        name: common
+      when: ("'check_disk' in action") or ("'check_status' in action")
      
 - hosts: group2
-  gather_facts: true 
   tasks:
     - include_role:
         name: postgresql
-        
+      when: "'verify_install' in action"
+    - include_role:
+        name: common
+      when: ("'check_disk' in action") or ("'check_status' in action")
+
 - hosts: group3
-  gather_facts: true 
   tasks:
     - include_role:
         name: rabbitmq
+      when: "'verify_install' in action"
+    - include_role:
+        name: common
+      when: ("'check_disk' in action") or ("'check_status' in action")
+

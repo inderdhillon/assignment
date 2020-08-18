@@ -1,0 +1,68 @@
+
+
+==================================Assignment ==============================================
+
+ 
+
+Assumption: 
+
+"rbcapp1" is a critical application that needs to be monitored and its status should be recorded into Elasticsearch. This Application depends on 3 services: httpd, rabbitMQ and postgreSQL .
+
+If any of these services are down, "rbcapp1" state will be considered "DOWN" otherwise it is "UP".
+
+Notes:
+
+    Please assume all these services runs under Linux machines.
+    Please include a READ.me file to describe the answers.
+
+ 
+
+TEST1:  Assume all 3 services are running on the same server as Linux services.
+
+    Write a Python script that monitors these services and creates a JSON object with application_name, application_status and host_name.
+
+Sample JSON Payload
+
+{ 
+   "service_name":"httpd",
+   "service_status":"UP",
+   "host_name":"host1"
+}
+
+Please write this JSON object to a file named {serviceName}-status-{@timestamp}.json
+
+    Write a simple Python REST webservice that: 
+
+        Accepts the above created JSON file and writes it to Elasticsearch 
+        Provide a second endpoint where the data can be retrieved, i.e 
+
+POST /add  à Insert payload into Elasticsearch
+
+GET /health_check à Return the Application status (“UP” or “DOWN”)
+
+Sample calls
+
+https://myservice.rbc.com/add
+
+https://myservice.rbc.com/health_check
+
+ 
+
+TEST2: Assume the 3 services are running on different servers as RHEL services:  httpd on host1, rabbitMQ on host2, postgreSQL on host3
+
+    Create an Ansible inventory file for the above hosts that meets the monitoring needs explained above
+    Write an Ansible playbook that will action based on a provided variable named "action":  (clarify the action variable)
+
+        "action=verify_install": verifies the services are installed on their allocated hosts and if not, the playbook should install it. (for the install, please pick just one service to illustrate)
+        "action=check-disk" : with this action it should check the disk space on all servers and report any disk usage > 80%. Send an alert email to a selected email address (Pick your own).
+        "action=check-status": with this action it should return the status of the application “rbcapp1” and a list of services that are down. (you can use the REST endpoint created in TEST1).
+
+Below is a sample command to run the playbook
+
+Ansible-playbook assignment.yml -I inventory -e action=verify_install ---- This is for verify install as an example
+
+ 
+
+===================================End of Assignement =========================================================
+
+ 

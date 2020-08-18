@@ -7,7 +7,7 @@
       state: present 
     become: yes
 
-  - name: check if apache2 service status
+  - name: check apache2 service status
     service:
       name: apache2
       state: started

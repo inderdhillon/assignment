@@ -1,5 +1,5 @@
 ---
-# check_disk tasks file for apache hosts
+# check_disk tasks file for all hosts
 
 - name: Check that system volumes have atleast 20% free space
   assert:
