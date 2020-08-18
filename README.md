@@ -5,8 +5,7 @@ This repository contains solution for assignment tasks as described in assignmen
 1. TEST1
 Solution for TEST1 is present in TEST1 directory
 
-1.1
-First part of solution for TEST1 is implemented in healthcheck.py script. This script monitors apache2, rabbitMQ and postgreSQL processes running on same Linux VM (Ubuntu OS).
+1.1 First part of solution for TEST1 is implemented in healthcheck.py script. This script monitors apache2, rabbitMQ and postgreSQL processes running on same Linux VM (Ubuntu OS).
 
 It has two key functions:
 
@@ -28,12 +27,9 @@ apache2-status-20200818-012430.json
 postgresql-status-20200818-012430.json
 rabbitmq-server-status-20200818-012430.json
 
-1.2
-For second part of solution for TEST1, I am still working on creating working API to read JSON files and writing to Elasticsearch. But I did create one api using flask framework which reads JSON objects and store as articles and I can query from there to get status of particular service. I'll upload this working solution to my repository soon.
+1.2 For second part of solution for TEST1, I am still working on creating working API to read JSON files and writing to Elasticsearch. But I did create one api using flask framework which reads JSON objects and store as articles and I can query from there to get status of particular service. I'll upload this working solution to my repository soon.
 
 I added SAMPLE_api.py script that I was working on flask framework.
-
-
 
 2. TEST2
 Solution for TEST2 is present in TEST2 directory.
