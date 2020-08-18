@@ -6,4 +6,3 @@
 
   - name: Check if all packages exist on rabbitmq server
     include_tasks: "{{ action }}.yml" 
-    when: "'verify_install' in action"

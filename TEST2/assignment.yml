@@ -1,29 +1,51 @@
 ---
 
 - hosts: group1
+  gather_facts: true
   tasks:
+
+    - fail: msg="Exiting. this play requires 'action' to be defined"
+      when: action is undefined
+
+    - fail: msg="Exiting. Please use valid option for 'action', choose from 'verify_install', 'check_status' or 'check_disk'"
+      when: action not in ['verify_install', 'check_status', 'check_disk']
+
     - include_role:
         name: apache
       when: "'verify_install' in action"
+
     - include_role:
         name: common
-      when: ("'check_disk' in action") or ("'check_status' in action")
+      when: action in ['check_status', 'check_disk']
      
 - hosts: group2
+  gather_facts: true
   tasks:
+    - fail: msg="Exiting. this play requires 'action' to be defined"
+      when: action is undefined
+
+    - fail: msg="Exiting. Please use valid option for 'action', choose from 'verify_install', 'check_status' or 'check_disk'"
+      when: action not in ['verify_install', 'check_status', 'check_disk']
+
     - include_role:
         name: postgresql
       when: "'verify_install' in action"
+
     - include_role:
         name: common
-      when: ("'check_disk' in action") or ("'check_status' in action")
+      when: action in ['check_status', 'check_disk']
 
 - hosts: group3
   tasks:
+    - fail: msg="Exiting. this play requires 'action' to be defined"
+      when: action is undefined
+
+    - fail: msg="Exiting. Please use valid option for 'action', choose from 'verify_install', 'check_status' or 'check_disk'"
+      when: action not in ['verify_install', 'check_status', 'check_disk']
+
     - include_role:
         name: rabbitmq
       when: "'verify_install' in action"
     - include_role:
         name: common
-      when: ("'check_disk' in action") or ("'check_status' in action")
-
+      when: action in ['check_status', 'check_disk']
