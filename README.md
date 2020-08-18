@@ -5,6 +5,7 @@ This repository contains solution for assignment tasks as described in assignmen
 1. TEST1
 Solution for TEST1 is present in TEST1 directory
 
+1.1
 First part of solution for TEST1 is implemented in healthcheck.py script. This script monitors apache2, rabbitMQ and postgreSQL processes running on same Linux VM (Ubuntu OS).
 
 It has two key functions:
@@ -27,21 +28,8 @@ apache2-status-20200818-012430.json
 postgresql-status-20200818-012430.json
 rabbitmq-server-status-20200818-012430.json
 
-1.1. Write a simple Python REST webservice that: 
-
-NOTES:
-        Accepts the above created JSON file and writes it to Elasticsearch 
-        Provide a second endpoint where the data can be retrieved, i.e 
-
-POST /add  à Insert payload into Elasticsearch
-
-GET /health_check à Return the Application status (“UP” or “DOWN”)
-
-Sample calls
-
-https://myservice.rbc.com/add
-
-https://myservice.rbc.com/health_check
+1.2
+For second part of solution for TEST1, I am still working on creating working API to read JSON files and writing to Elasticsearch. But I did create one api using flask framework which reads JSON objects and store as articles and I can query from there to get status of particular service. I'll upload this working solution to my repository soon.
 
 
 
@@ -86,12 +74,14 @@ roles/                      # Contains four roles: apache, postgresql, rabbitmq 
          main.yml           #  <-- variables associated with this role          
     
 
+NOTE: I put private key in inventory file to get it done quickly, but ideally we can move it to ansible vault or hashicorp vault.
+
 Sample run:
 ansible-playbook assignment.yml -I inventory -e action=verify_install 
 #This is to verify if service packages are installed.
 
 ansible-playbook assignment.yml -i inventory.ini -e action=check_status
-#This is to check application status. Please update healthcheck service url
+#This is to check application status. Please update healthcheck service url. It returns 
 
 ansible-playbook assignment.yml -i inventory.ini -e action=check_disk
 #This is to check disk space on all servers and sends email if disk utilization exceeds 80%.

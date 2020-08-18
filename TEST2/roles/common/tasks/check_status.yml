@@ -1,9 +1,22 @@
 ---
-# tasks file for common role
+# tasks file for Status_Check
 
   - name: Check application status
     uri:
-      url: https://myservice.rbc.com/health_check
+      url: <HealthCheck URL>
       return_content: yes
-    register: this
-    failed_when: "'UP' not in this.content"
+    register: health
+    #failed_when: "'UP' not in health.content"
+
+  - name: Sending an e-mail when application is DOWN
+    mail:
+     host: smtp.gmail.com
+     port: 587
+     sender: xxxxxx@gmail.com
+     username: xxxxxxxx@gmail.com
+     password: xxxxxxx
+     to: xxxxxxx@gmail.com
+     subject: ALERT:- Application is DOWN
+     body:   Ansible Application Status 
+   when: "'UP' not in health.content"
+   delegate_to: localhost
