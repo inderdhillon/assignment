@@ -3,7 +3,7 @@
 This repository contains solution for assignment tasks as described in assignment.txt file.
 
 1. TEST1
-Solution for TEST1 is present in TEST1 directory
+Solution is present in TEST1 directory
 
 1.1 First part of solution for TEST1 is implemented in healthcheck.py script. This script monitors apache2, rabbitMQ and postgreSQL processes running on same Linux VM (Ubuntu OS).
 
@@ -32,7 +32,7 @@ rabbitmq-server-status-20200818-012430.json
 I added SAMPLE_api.py script that I was working on flask framework.
 
 2. TEST2
-Solution for TEST2 is present in TEST2 directory.
+Solution is present in TEST2 directory.
 
 Below is directory structure of TEST2
 
