@@ -44,29 +44,29 @@ assignment.yml              # main playbook file for assignment
 roles/                      # Contains four roles: apache, postgresql, rabbitmq and common
   apache/                   # this directory represents a apache "role"
      tasks/                 #
-         main.yml           # <-- main tasks file includes two files verify_install.yml and check_disk.yml
+         main.yml           # <-- main tasks file includes verify_install.yml
          verify_install.yml #     This file contains tasks to verify packages, services required for apache
      vars/                  #
          main.yml           # <-- variables associated with this role
          
   postgresql/               # this directory represents a postgresql "role"
      tasks/                 #
-         main.yml           # <-- main tasks file includes two files verify_install.yml and check_disk.yml
+         main.yml           # <-- main tasks file includes verify_install.yml
          verify_install.yml #     This file contains tasks to verify packages, services required for apache
      vars/                  #
          main.yml           # <-- variables associated with this role
 
   rabbitmq/                 # this directory represents a rabbitmq "role"
      tasks/                 #
-         main.yml           # <-- main tasks file includes two files verify_install.yml and check_disk.yml
+         main.yml           # <-- main tasks file includes verify_install.yml
          verify_install.yml #     This file contains tasks to verify packages, services required for apache
      vars/                  #
          main.yml           #  <-- variables associated with this role 
   
   common/                   # this directory represents a common "role"
      tasks/                 #
-         main.yml           # <-- main tasks file includes two files verify_install.yml and check_disk.yml
-         check_disk.yml     #     This file contains tasks to check application status
+         main.yml           # <-- main tasks file includes two files check_status.yml and check_disk.yml
+         check_status.yml     #     This file contains tasks to check application status
          check_disk.yml     #     This file contains tasks to check disk space on all mounted volumes
      vars/                  #
          main.yml           #  <-- variables associated with this role          
@@ -95,5 +95,4 @@ Validation Checks:
    msg="Exiting. this play requires 'action' to be defined"
 
 2. You'll receive below message if 'action' is not chosen from one of these values: ['verify_install', 'check_status', 'check_disk']
-   msg="Exiting. Please use valid option for 'action', choose from 'verify_install', 'check_status' or 'check_disk'"
-      when: action not in ['verify_install', 'check_status', 'check_disk']
+   msg="Exiting. Please use valid option for 'action', choose from 'verify_install', 'check_status' or 'check_disk'"      
